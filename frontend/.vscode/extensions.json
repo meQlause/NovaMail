@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    // ── Must-have ──
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+
+    // ── TypeScript / React ──
+    "ms-vscode.vscode-typescript-next",
+    "dsznajder.es7-react-js-snippets",
+    "burkeholland.simple-react-snippets",
+
+    // ── DX ──
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-rename-tag",
+    "steoates.autoimport",
+    "usernamehw.errorlens",
+    "mikestead.dotenv",
+    "eamodio.gitlens"
+  ]
+}

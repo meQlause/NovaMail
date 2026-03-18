@@ -1,25 +1,71 @@
-# Logs
-logs
+# ── Dependencies ──
+node_modules/
+.pnp
+.pnp.js
+
+# ── Bun ──
+bun.lockb
+.bun/
+
+# ── Build output ──
+dist/
+dist-ssr/
+build/
+
+# ── Vite ──
+.vite/
+vite.config.ts.timestamp-*
+
+# ── TypeScript ──
+*.tsbuildinfo
+
+# ── Environment variables ──
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ── Logs ──
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
-package-lock.json
+bun-error.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# ── OS ──
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
 
-# Editor directories and files
+# ── Editors ──
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+!.vscode/settings.json
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.swp
+*.swo
+*~
+
+# ── Testing ──
+coverage/
+.nyc_output/
+
+# ── Misc ──
+*.local
+.cache/
+.temp/
+.tmp/

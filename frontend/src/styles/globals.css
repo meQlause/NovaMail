@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Colors ── */
+  --color-void: #080b10;
+  --color-surface: #0c1018;
+  --color-card: #0f1520;
+  --color-panel: #111827;
+  --color-input: #161e2e;
+  --color-hover: #1a2336;
+  --color-selected: #162032;
+  --color-active: #1c2840;
+
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-mid: rgba(255, 255, 255, 0.09);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+  --color-border-accent: rgba(99, 179, 237, 0.35);
+
+  --color-accent: #63b3ed;
+  --color-accent-vivid: #4da8e8;
+  --color-accent-glow: rgba(99, 179, 237, 0.15);
+  --color-accent-dim: rgba(99, 179, 237, 0.5);
+
+  --color-text-primary: #dde4f0;
+  --color-text-secondary: #7d8fa5;
+  --color-text-muted: #435060;
+  --color-text-accent: #63b3ed;
+  --color-text-unread: #eef2fa;
+
+  --color-success: #4ade80;
+  --color-error: #f87171;
+  --color-warning: #fbbf24;
+
+  --color-tag-blue-bg: rgba(99, 179, 237, 0.12);
+  --color-tag-blue-text: #63b3ed;
+  --color-tag-green-bg: rgba(74, 222, 128, 0.10);
+  --color-tag-green-text: #4ade80;
+  --color-tag-amber-bg: rgba(251, 191, 36, 0.10);
+  --color-tag-amber-text: #fbbf24;
+  --color-tag-red-bg: rgba(248, 113, 113, 0.10);
+  --color-tag-red-text: #f87171;
+
+  /* ── Fonts ── */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* ── Border Radius ── */
+  --radius-xs: 4px;
+  --radius-sm: 7px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Page background grid + glow ── */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.page-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(99, 179, 237, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 179, 237, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.page-bg::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(99, 179, 237, 0.07) 0%, transparent 65%);
+}
+
+/* ── Brand panel inner glow (login) ── */
+.brand-panel-glow::before {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(99, 179, 237, 0.09) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.brand-panel-glow::after {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: -30px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(99, 179, 237, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Register card glow ── */
+.register-card-glow::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(99, 179, 237, 0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ── Input focus ring ── */
+.nova-input:focus {
+  border-color: rgba(99, 179, 237, 0.45);
+  background-color: var(--color-hover);
+  box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.18);
+  outline: none;
+}
+
+/* ── Scrollbar hide ── */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
