@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Generate DH parameters for SSL (if missing)
+if [ ! -f /etc/dovecot/dh.pem ]; then
+    openssl dhparam -out /etc/dovecot/dh.pem 512
+fi
+
 if ! getent group vmail >/dev/null; then
     addgroup -g 5000 -S vmail
 fi
@@ -21,7 +26,8 @@ VMAIL_GID=$(getent passwd vmail | cut -d: -f4)
 
 mkdir -p /vmail/mail.ardial.my.id/user1/Maildir
 mkdir -p /vmail/mail.ardial.my.id/user2/Maildir
-chown -R ${VMAIL_UID}:${VMAIL_GID} /vmail
+chown -R 5000:5000 /vmail
+chmod -R 770 /vmail
 
 mkdir -p /etc/dovecot
 cat > /etc/dovecot/passwd <<EOF
