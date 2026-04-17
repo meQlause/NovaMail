@@ -1,6 +1,6 @@
 FROM alpine:3.20
 
-LABEL maintainer="me@ardial.tech"
+LABEL maintainer="me@ardial.my.id"
 
 # Install packages
 RUN apk update && \
@@ -18,7 +18,7 @@ RUN apk update && \
     rm -rf /var/cache/apk/*
 
 # Configure DKIM directories
-RUN mkdir -p /etc/opendkim/keys/mail.ardial.tech/ && \
+RUN mkdir -p /etc/opendkim/keys/mail.ardial.my.id/ && \
     chown -R root:root /etc/opendkim
 
 RUN mkdir -p /run/opendkim && \
@@ -27,7 +27,7 @@ RUN mkdir -p /run/opendkim && \
 # Copy DKIM config
 COPY OpenDKIM/opendkim.conf /etc/opendkim/
 COPY OpenDKIM/TrustedHosts OpenDKIM/KeyTable OpenDKIM/SigningTable /etc/opendkim/
-COPY Credentials/OpenDKIM/priv.key /etc/opendkim/keys/mail.ardial.tech/mail.private
+COPY Credentials/OpenDKIM/priv.key /etc/opendkim/keys/mail.ardial.my.id/mail.private
 
 # Copy Postfix config
 COPY Postfix/main.cf /etc/postfix/main.cf

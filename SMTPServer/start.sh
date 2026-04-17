@@ -1,11 +1,11 @@
 #!/bin/sh
 
 if ! getent group vmail >/dev/null; then
-    addgroup -S vmail
+    addgroup -g 105 -S vmail
 fi
 
 if ! id -u vmail >/dev/null 2>&1; then
-    adduser -S -G vmail vmail
+    adduser -u 102 -S -G vmail vmail
 fi
 
 if ! getent group opendkim >/dev/null; then
@@ -19,22 +19,22 @@ fi
 VMAIL_UID=$(getent passwd vmail | cut -d: -f3)
 VMAIL_GID=$(getent passwd vmail | cut -d: -f4)
 
-mkdir -p /vmail/mail.ardial.tech/user1/Maildir
-mkdir -p /vmail/mail.ardial.tech/user2/Maildir
+mkdir -p /vmail/mail.ardial.my.id/user1/Maildir
+mkdir -p /vmail/mail.ardial.my.id/user2/Maildir
 chown -R ${VMAIL_UID}:${VMAIL_GID} /vmail
 
 mkdir -p /etc/dovecot
 cat > /etc/dovecot/passwd <<EOF
-user1@mail.ardial.tech:{PLAIN}secret123
-user2@mail.ardial.tech:{PLAIN}secret456
+user1@mail.ardial.my.id:{PLAIN}secret123
+user2@mail.ardial.my.id:{PLAIN}secret456
 EOF
 chown dovecot:dovecot /etc/dovecot/passwd
 chmod 640 /etc/dovecot/passwd
 
 mkdir -p /etc/postfix
 cat > /etc/postfix/vmailbox <<EOF
-user1@mail.ardial.tech mail.ardial.tech/user1/
-user2@mail.ardial.tech mail.ardial.tech/user2/
+user1@mail.ardial.my.id mail.ardial.my.id/user1/
+user2@mail.ardial.my.id mail.ardial.my.id/user2/
 EOF
 postmap /etc/postfix/vmailbox
 
@@ -49,17 +49,17 @@ chmod 755 /etc/opendkim
 chown root:root /etc/opendkim/keys
 chmod 755 /etc/opendkim/keys
 
-chown root:root /etc/opendkim/keys/mail.ardial.tech
-chmod 755 /etc/opendkim/keys/mail.ardial.tech
+chown root:root /etc/opendkim/keys/mail.ardial.my.id
+chmod 755 /etc/opendkim/keys/mail.ardial.my.id
 
-chown root:opendkim /etc/opendkim/keys/mail.ardial.tech/mail.private
-chmod 750 /etc/opendkim/keys/mail.ardial.tech/mail.private
+chown root:opendkim /etc/opendkim/keys/mail.ardial.my.id/mail.private
+chmod 750 /etc/opendkim/keys/mail.ardial.my.id/mail.private
 
 touch /var/log/mail.log
 chmod 666 /var/log/mail.log
 
-if [ ! -f /etc/opendkim/keys/mail.ardial.tech/mail.private ]; then
-    echo "[ERROR] DKIM private key not found at /etc/opendkim/keys/mail.ardial.tech/mail.private"
+if [ ! -f /etc/opendkim/keys/mail.ardial.my.id/mail.private ]; then
+    echo "[ERROR] DKIM private key not found at /etc/opendkim/keys/mail.ardial.my.id/mail.private"
     exit 1
 fi
 

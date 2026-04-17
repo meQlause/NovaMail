@@ -1,1 +1,1 @@
-mailserv._domainkey.mail.ardial.tech mail.ardial.tech:mail:/etc/opendkim/keys/mail.ardial.tech/mail.private
+mailserv._domainkey.mail.ardial.my.id mail.ardial.my.id:mailserv:/etc/opendkim/keys/mail.ardial.my.id/mail.private

@@ -96,14 +96,14 @@ mail_owner = postfix
 # other configuration parameters.
 #
 #myhostname = host.domain.tld
-myhostname = mail.ardial.tech
+myhostname = mail.ardial.my.id
 
 # The mydomain parameter specifies the local internet domain name.
 # The default is to use $myhostname minus the first component.
 # $mydomain is used as a default value for many other configuration
 # parameters.
 #
-mydomain = ardial.tech
+mydomain = ardial.my.id
 
 # SENDING MAIL
 #
@@ -687,7 +687,7 @@ meta_directory = /etc/postfix
 shlib_directory = /usr/lib/postfix
 
 # Virtual Mailbox Settings
-virtual_mailbox_domains = mail.ardial.tech
+virtual_mailbox_domains = mail.ardial.my.id
 virtual_mailbox_base = /vmail
 virtual_minimum_uid = 100
 virtual_uid_maps = static:102
