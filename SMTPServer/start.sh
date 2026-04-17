@@ -25,8 +25,8 @@ chown -R ${VMAIL_UID}:${VMAIL_GID} /vmail
 
 mkdir -p /etc/dovecot
 cat > /etc/dovecot/passwd <<EOF
-user1@mail.ardial.my.id:{PLAIN}secret123
-user2@mail.ardial.my.id:{PLAIN}secret456
+user1@mail.ardial.my.id:{PLAIN}secret123::::::
+user2@mail.ardial.my.id:{PLAIN}secret456::::::
 EOF
 chown dovecot:dovecot /etc/dovecot/passwd
 chmod 640 /etc/dovecot/passwd

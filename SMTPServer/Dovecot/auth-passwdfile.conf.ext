@@ -5,7 +5,7 @@
 
 passdb {
   driver = passwd-file
-  args = format=%u:%p /etc/dovecot/passwd
+  args = /etc/dovecot/passwd
 }
 
 userdb {
