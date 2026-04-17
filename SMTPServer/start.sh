@@ -1,10 +1,5 @@
 #!/bin/sh
 
-# Generate DH parameters for SSL (if missing)
-if [ ! -f /etc/dovecot/dh.pem ]; then
-    openssl dhparam -out /etc/dovecot/dh.pem 512
-fi
-
 if ! getent group vmail >/dev/null; then
     addgroup -g 5000 -S vmail
 fi
@@ -20,9 +15,6 @@ fi
 if ! id -u opendkim >/dev/null 2>&1; then
     adduser -S -G opendkim opendkim
 fi
-
-VMAIL_UID=$(getent passwd vmail | cut -d: -f3)
-VMAIL_GID=$(getent passwd vmail | cut -d: -f4)
 
 mkdir -p /vmail/mail.ardial.my.id/user1/Maildir
 mkdir -p /vmail/mail.ardial.my.id/user2/Maildir
