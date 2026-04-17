@@ -690,8 +690,8 @@ shlib_directory = /usr/lib/postfix
 virtual_mailbox_domains = mail.ardial.my.id
 virtual_mailbox_base = /vmail
 virtual_minimum_uid = 100
-virtual_uid_maps = static:102
-virtual_gid_maps = static:105
+virtual_uid_maps = static:5000
+virtual_gid_maps = static:5000
 virtual_mailbox_maps = lmdb:/etc/postfix/vmailbox
 virtual_transport = lmtp:unix:private/dovecot-lmtp
 

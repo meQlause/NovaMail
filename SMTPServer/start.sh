@@ -1,11 +1,11 @@
 #!/bin/sh
 
 if ! getent group vmail >/dev/null; then
-    addgroup -g 105 -S vmail
+    addgroup -g 5000 -S vmail
 fi
 
 if ! id -u vmail >/dev/null 2>&1; then
-    adduser -u 102 -S -G vmail vmail
+    adduser -u 5000 -S -G vmail vmail
 fi
 
 if ! getent group opendkim >/dev/null; then
